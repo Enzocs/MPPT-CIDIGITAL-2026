@@ -1,0 +1,190 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Página-1" id="ciPQfmNRzZttfwL4NYeK">
+    <mxGraphModel dx="2900" dy="1883" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="light-dark(#FFFFFF,#FFFFFF)" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="VIUGaLMYNlVvoc_84mti-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;gradientColor=none;strokeColor=light-dark(#000000,#000000);fillColor=light-dark(#FFFFFF,#FFFFFF);strokeWidth=3;" value="" vertex="1">
+          <mxGeometry height="81" width="120" x="117" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); font-size: 14px;&quot;&gt;MPPT&lt;br&gt;Core&lt;/font&gt;" vertex="1">
+          <mxGeometry height="53.5" width="80" x="137" y="118.75" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-3" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0;entryY=0.25;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="26" y="131" as="sourcePoint" />
+            <mxPoint x="117" y="131.25" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-4" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0;entryY=0.25;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="26" y="154" as="sourcePoint" />
+            <mxPoint x="117" y="154" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;V&lt;/font&gt;in[x]&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="41" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;I&lt;/font&gt;in&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="41" y="129" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-8" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0.25;entryY=1;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="117" y="254" as="sourcePoint" />
+            <mxPoint x="117" y="186" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-9" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0.5;entryY=1;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="147" y="254" as="sourcePoint" />
+            <mxPoint x="147" y="186" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-10" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;V&lt;/font&gt;ref[x-1]&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="144" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-11" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;∆&lt;/font&gt;ref&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="103" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-12" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0.25;entryY=1;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="199" y="254" as="sourcePoint" />
+            <mxPoint x="199" y="186" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-13" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0.5;entryY=1;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="236" y="254" as="sourcePoint" />
+            <mxPoint x="236" y="186" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;V&lt;/font&gt;in[x-1]&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="62" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-15" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;P&lt;/font&gt;[x-1]&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="188" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-16" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0;entryY=0.25;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="237.5" y="113" as="sourcePoint" />
+            <mxPoint x="328.5" y="113.25" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;V&lt;/font&gt;in[x-1]&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="252.5" y="87" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-19" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;P&lt;/font&gt;[x-1]&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="252.5" y="111" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-20" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0;entryY=0.25;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="235.5" y="136" as="sourcePoint" />
+            <mxPoint x="326.5" y="136.25" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-21" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Obs.:&lt;/font&gt;&lt;/h1&gt;&lt;p&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font&gt;&lt;font style=&quot;&quot;&gt;V&lt;/font&gt;in&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[x-1]&lt;/font&gt;,&amp;nbsp;&lt;font&gt;P&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[x-1]&lt;/font&gt; e Vref&lt;/font&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;[x-1]&lt;/font&gt;&lt;/span&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;&amp;nbsp;da saída são valores atualizados com &lt;/span&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;V&lt;/font&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;in&lt;font style=&quot;font-size: 10px;&quot;&gt;[x],&lt;/font&gt;&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;P&lt;/font&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[x] e &lt;/font&gt;&lt;font&gt;Vref&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[x]&lt;/font&gt;, e vão para o banco de registradores.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font&gt;V&lt;/font&gt;ref é o valor de referência atualizado que vai para o banco de registradores e para o próximo bloco.&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Dc&lt;/span&gt;&amp;nbsp;é o valor de comando do duty controller, 00 indica que deve diminuir, 01 indica que deve aumentar e 10 matém. Definido baseado na comparação de Vref&lt;font style=&quot;font-size: 10px;&quot;&gt;[x]&lt;/font&gt; com Vref&lt;font style=&quot;font-size: 10px;&quot;&gt;[x-1]&lt;/font&gt;.&lt;/font&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="280" width="238" x="357" y="-17" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-22" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;V&lt;/font&gt;ref[x-1]&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="252.5" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-23" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0;entryY=0.25;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="235.5" y="159" as="sourcePoint" />
+            <mxPoint x="326.5" y="159.25" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-24" edge="1" parent="1" source="VIUGaLMYNlVvoc_84mti-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="VIUGaLMYNlVvoc_84mti-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;gradientColor=none;strokeColor=light-dark(#000000,#000000);fillColor=light-dark(#FFFFFF,#FFFFFF);strokeWidth=3;" value="" vertex="1">
+          <mxGeometry height="81" width="120" x="116" y="291" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-26" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;Duty&lt;br&gt;Controller&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="53.5" width="80" x="136" y="304.75" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-27" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0;entryY=0.25;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="25" y="331" as="sourcePoint" />
+            <mxPoint x="116" y="331.25" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-29" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;D&lt;/font&gt;c[x]&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="40" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-31" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0.25;entryY=1;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="130" y="440" as="sourcePoint" />
+            <mxPoint x="130" y="372" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-32" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0.5;entryY=1;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="165" y="440" as="sourcePoint" />
+            <mxPoint x="165" y="372" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-34" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;∆&lt;/font&gt;d&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="122" y="391" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-37" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;D&lt;/span&gt;[x-1]&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="75" y="391" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-39" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0;entryY=0.25;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="236" y="331" as="sourcePoint" />
+            <mxPoint x="327" y="331.25" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-40" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;D&lt;/font&gt;[x-1]&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="251" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-45" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Obs.:&lt;/font&gt;&lt;/h1&gt;&lt;p&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;D&lt;/font&gt;[x-1]&amp;nbsp;da saída é o valor calculado e atualizado do duty cycle, e vai para o banco de registradores e para o próximo bloco.&lt;/font&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="110" width="238" x="357" y="258" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-46" parent="1" style="rounded=0;whiteSpace=wrap;html=1;gradientColor=none;strokeColor=light-dark(#000000,#000000);fillColor=light-dark(#FFFFFF,#FFFFFF);strokeWidth=3;" value="" vertex="1">
+          <mxGeometry height="81" width="120" x="117" y="481" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-47" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;PWM&lt;br&gt;Generator&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="53.5" width="80" x="137" y="494.75" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-48" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0;entryY=0.25;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="26" y="521" as="sourcePoint" />
+            <mxPoint x="117" y="521.25" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-49" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;D&lt;/font&gt;[x-1]&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="41" y="495" as="geometry" />
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-50" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0;entryY=0.25;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="237" y="521" as="sourcePoint" />
+            <mxPoint x="328" y="521.25" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VIUGaLMYNlVvoc_84mti-51" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;PWM&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="252" y="495" as="geometry" />
+        </mxCell>
+        <mxCell id="8qZ1wpJC6fbnbyqcFTQE-70" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0.25;entryY=1;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="223" y="440" as="sourcePoint" />
+            <mxPoint x="223" y="372" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8qZ1wpJC6fbnbyqcFTQE-73" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Dc[x-1]&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="165" y="391" as="geometry" />
+        </mxCell>
+        <mxCell id="8qZ1wpJC6fbnbyqcFTQE-75" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);entryX=0;entryY=0.25;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="237" y="179" as="sourcePoint" />
+            <mxPoint x="328" y="179.25" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8qZ1wpJC6fbnbyqcFTQE-76" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;D&lt;/span&gt;&lt;font&gt;c&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="252.5" y="155" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
