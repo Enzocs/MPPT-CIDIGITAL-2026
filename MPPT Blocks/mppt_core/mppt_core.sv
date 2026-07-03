@@ -1,16 +1,16 @@
 /*
 	Duvidas:
-    - Especificação: pinagem, diagramas e FSM
-    - Plano de verificação
-    - adicionar valid de entrada para iniciar a lógica
+    -
 */
 
 module mppt_core #(parameter width = 10)(
   input wire clk,					
-  input wire rst,					
+  input wire rst,			
+  input wire valid_signal,			// Variável que indica um sinal válido para início da lógica
   input wire [(width-1):0] V,		// Variável com o valor de tensão atual
   input wire [(width-1):0] I,		// Variável com o valor de corrente atual
-  output wire [1:0] Dc_out			// Variável que indica a ação a se fazer no duty_controller
+  output wire [1:0] Dc_out,			// Variável que indica a ação a se fazer no duty_controller
+  output wire valid_end_cycle		// Variável que indica para a FSM "mãe" que o ciclo foi finalizado
 );
   
   
@@ -30,10 +30,9 @@ module mppt_core #(parameter width = 10)(
   localparam P_DIFF = 3'b001;		// Potência atual diferente da anterior
   localparam PGVG_PLGL = 3'b010;	// Potência atual maior que anterior e tensão atual maior que anterior OU potência atual menor que anterior e tensão atual menor que anterior
   localparam PGVL_PLVG = 3'b011;	// Potência atual maior que anterior e tensão atual menor que anterior OU potência atual menor que anterior e tensão atual maior que anterior
-  localparam V_ref_COMPARE = 3'b100;// Comparação de V_ref_newer com V_ref_older
-  localparam V_ref_L = 3'b101;		// V_ref_newer menor que V_ref_older
-  localparam V_ref_G = 3'b110;		// V_ref_newer maior que V_ref_older
-  localparam END = 3'b111;			// Atualizações de variáveis
+  localparam V_ref_L = 3'b100;		// V_ref_newer menor que V_ref_older
+  localparam V_ref_G = 3'b101;		// V_ref_newer maior que V_ref_older
+  localparam END = 3'b110;			// Atualizações de variáveis
   
   wire [width:0] unused_saida;		// Variável não utilizada (preenche o espaço da leitura do banco de dados quando se deseja escrever)
   
@@ -49,6 +48,19 @@ module mppt_core #(parameter width = 10)(
   assign V_newer = V;
   assign P_newer = V_newer * I;
 
+  /* Detecta o sinal de validação */
+  reg valid_d;	// Variável auxiliar para detecção da borda de subida do valid_signal
+  wire valid_pulse;
+
+  always @(posedge clk or posedge rst) begin
+   	 if(rst)
+        valid_d <= 1'b0;
+    else
+        valid_d <= valid_signal;
+  end
+
+  assign valid_pulse = valid_signal & ~valid_d;
+  
   /* Atualização do estado */
   always @(posedge clk or posedge rst) begin
     if(rst) begin
@@ -61,9 +73,9 @@ module mppt_core #(parameter width = 10)(
       state <= next_state;
       
       if (state == END) begin
-        V_older <= V_newer;
-        V_ref_older <= V_ref_newer;
-        P_older <= P_newer;
+       	V_older <= V_newer;
+       	V_ref_older <= V_ref_newer;
+       	P_older <= P_newer;
       end
     end
   end
@@ -74,8 +86,13 @@ module mppt_core #(parameter width = 10)(
     
     case(state)
       IDLE: begin
-        if(P_newer != P_older)begin
-          next_state = P_DIFF;
+        if(valid_pulse) begin
+        	if(P_newer != P_older)begin
+        	  next_state = P_DIFF;
+        	end
+        	else begin
+        	  next_state = END;
+        	end
         end
         else begin
           next_state = IDLE;
@@ -89,7 +106,7 @@ module mppt_core #(parameter width = 10)(
           next_state = PGVL_PLVG;
         end
         else begin
-          next_state = IDLE;
+          next_state = END;
         end
       end
       PGVG_PLGL: begin
@@ -99,14 +116,6 @@ module mppt_core #(parameter width = 10)(
       PGVL_PLVG: begin
         //next_state = V_ref_COMPARE;
         next_state = V_ref_L;
-      end
-      V_ref_COMPARE: begin
-        if(V_ref_newer > V_ref_older) begin
-          //next_state = V_ref_G;
-        end
-        else begin
-          //next_state = V_ref_L;
-        end
       end
       V_ref_L: begin
         next_state = END;
@@ -139,8 +148,6 @@ module mppt_core #(parameter width = 10)(
       PGVL_PLVG: begin
         V_ref_newer = V_ref_older - delta_ref;
       end
-      V_ref_COMPARE: begin
-      end
       V_ref_L: begin
         Dc_aux = 2'b01;
       end
@@ -156,5 +163,6 @@ module mppt_core #(parameter width = 10)(
   end
 
   assign Dc_out = Dc_aux;
+  assign valid_end_cycle = (state == END);
   
 endmodule

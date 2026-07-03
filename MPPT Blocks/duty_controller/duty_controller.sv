@@ -1,7 +1,6 @@
 /*
       Dúvidas:
-    - adicionar um valid de saída para a FSM que pede dados
-    - Quando o valid deve virar 1? apenas quando o ciclo terminar?
+    - 
 */
 
 module duty_controller #(parameter width = 10)(
@@ -9,7 +8,6 @@ module duty_controller #(parameter width = 10)(
   input wire rst,
   input wire [1:0] Dc_in,		// Variável que indica a ação a se fazer (vem do bloco anterior)
   output wire [width:0] D_out,	// Variável que contém o valor de saída para o bloco PWM (também vai para o banco de dados, para atualizar D_older)
-  output wire valid				// Variável que indica que pode ser iniciado novo ciclo de leitura
 );
  
 /*
@@ -28,6 +26,7 @@ module duty_controller #(parameter width = 10)(
   /* Leitura do bando de dados (desabilitado por ainda não ter sido implementado) */
   //banco_de_dados delta_d_mem(.saida_leitura(delta_d),.read_en(1'b1),.write_en(1'b0),.entrada_escrita({(width+1){1'b0}}),.endereco(YYY),.clk(clk));	// leitura de delta_d
 	assign delta_d  = 10'd200;	// Valor atribuído localmente para simular o banco de dados não implementado
+  //  banco_de_dados D_older_mem_ren(.saida_leitura(unused_saida),.read_en(1'b0),.write_en(1'b1),.entrada_escrita(D_older),.endereco(XXX2),.clk(clk)); // Escrita de D_older
   
   assign D_out = D_older;
   
@@ -62,7 +61,4 @@ module duty_controller #(parameter width = 10)(
     end
   end
   
-  
-  /* Escrita no bando de dados (desabilitado por ainda não ter sido implementado) */
-//  banco_de_dados D_older_mem_ren(.saida_leitura(unused_saida),.read_en(1'b0),.write_en(1'b1),.entrada_escrita(D_older),.endereco(XXX2),.clk(clk)); // Escrita de D_older
 endmodule
