@@ -6,8 +6,8 @@
 module duty_controller #(parameter width = 10)(
   input wire clk,
   input wire rst,
-  input wire [1:0] Dc_in,		// Variável que indica a ação a se fazer (vem do bloco anterior)
-  output wire [width:0] D_out,	// Variável que contém o valor de saída para o bloco PWM (também vai para o banco de dados, para atualizar D_older)
+  input wire [1:0] Dc_in,		// Entrada que indica a ação a se fazer (vem do bloco anterior)
+  output wire [width:0] D_out,	// Saída que contém o valor de controle de largura de pulso do PWM
 );
  
 /*
@@ -19,7 +19,7 @@ module duty_controller #(parameter width = 10)(
 */  
  
   wire [(width-1):0] delta_d;	// Variável que contém o fator de alteração das operações (vem da leitura do banco de dados)
-  reg [width:0] D_older; 		// Variável que contém o valor da última saída
+  reg [width:0] D_older; 		// Variável que contém o último valor de D_out
   localparam [width:0] MAX_D = {(width+1){1'b1}};	// Variável para tratamento de overflow
   wire [width:0] unused_saida;	// Variável não utilizada (preenche o espaço da leitura do banco de dados quando se deseja escrever)
   

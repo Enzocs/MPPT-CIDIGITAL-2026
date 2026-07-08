@@ -6,11 +6,11 @@
 module mppt_core #(parameter width = 10)(
   input wire clk,					
   input wire rst,			
-  input wire valid_signal,			// Variável que indica um sinal válido para início da lógica
-  input wire [(width-1):0] V,		// Variável com o valor de tensão atual
-  input wire [(width-1):0] I,		// Variável com o valor de corrente atual
-  output wire [1:0] Dc_out,			// Variável que indica a ação a se fazer no duty_controller
-  output wire valid_end_cycle		// Variável que indica para a FSM "mãe" que o ciclo foi finalizado
+  input wire valid_signal,			// Entrada que indica um sinal válido para início da lógica
+  input wire [(width-1):0] V,		// Entrada com o valor de tensão atual
+  input wire [(width-1):0] I,		// Entrada com o valor de corrente atual
+  output wire [1:0] Dc_out,			// Saída que indica a ação a se fazer no duty_controller
+  output wire valid_end_cycle		// Saída que indica para a FSM "mãe" que o ciclo foi finalizado
 );
   
   
@@ -110,11 +110,9 @@ module mppt_core #(parameter width = 10)(
         end
       end
       PGVG_PLGL: begin
-        //next_state = V_ref_COMPARE;
         next_state = V_ref_G;
       end
       PGVL_PLVG: begin
-        //next_state = V_ref_COMPARE;
         next_state = V_ref_L;
       end
       V_ref_L: begin
