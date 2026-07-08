@@ -1,5 +1,5 @@
 module signal_processing (
-    input  wire        clk,              
+    input  wire        clk,              // Clock do sistema
     input  wire        rst_n,            // Reset ativo em nível baixo
 
     // Interface com o Sample Formatter
@@ -14,7 +14,7 @@ module signal_processing (
 );
 
     // Definição dos Estados da FSM
-    localparam STATE_IDLE         = 2'b00,
+    localparam STATE_IDLE          = 2'b00,
                STATE_REG_PIPELINE = 2'b01,
                STATE_SUM_N_SHIFT  = 2'b10,
                STATE_FILTER_VALID = 2'b11;
@@ -25,13 +25,13 @@ module signal_processing (
     reg [15:0] v_reg [0:3];
     reg [15:0] i_reg [0:3];
 
-    // Registradores para armazenar o resultado da soma
-    // 18 bits de largura para evitar overflow na soma de quatro números de 16 bits
+    // Registradores para armazenar o resultado da soma (18 bits para evitar overflow)
     reg [17:0] v_sum;
     reg [17:0] i_sum;
 
     integer k;
 
+    // 1. Transição de Estados (Lógica Sequencial)
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             current_state <= STATE_IDLE;
@@ -40,6 +40,7 @@ module signal_processing (
         end
     end
 
+    // 2. Lógica do Próximo Estado (Combinacional)
     always @(*) begin
         case (current_state)
             STATE_IDLE: begin
@@ -108,7 +109,7 @@ module signal_processing (
                 end
 
                 STATE_FILTER_VALID: begin
-                    // Divide por 4 usando Shift Right de 2 bits (ignora os 2 bits menos significativos)
+                    // Divide por 4 usando Shift Right de 2 bits
                     v_signal_out <= v_sum[17:2];
                     i_signal_out <= i_sum[17:2];
                     
@@ -120,5 +121,3 @@ module signal_processing (
     end
 
 endmodule
-
-module sample_format
