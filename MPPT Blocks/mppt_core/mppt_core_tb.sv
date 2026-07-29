@@ -140,6 +140,14 @@ module mppt_core_tb;
         repeat(8) @(posedge clk);
 
         //------------------------------------------------
+        // Caso 7
+        // Potência muda por conta da corrente
+        //------------------------------------------------
+      $display("\nCaso 7: Mudanca pela corrente");
+        send_sample(80,7);       // P=560
+        repeat(8) @(posedge clk);
+
+        //------------------------------------------------
 
         $display("\nFim da simulacao.");
         $finish;

@@ -6,6 +6,7 @@ module tb_duty_controller;
 
     reg clk;
     reg rst;
+    reg valid_input;
     reg [1:0] Dc_in;
     wire [width:0] D_out;
 
@@ -13,6 +14,7 @@ module tb_duty_controller;
     duty_controller #(width) DUT (
         .clk(clk),
         .rst(rst),
+        .valid_input(valid_input),
         .Dc_in(Dc_in),
         .D_out(D_out)
     );
@@ -25,16 +27,17 @@ module tb_duty_controller;
 
     // Monitor
     initial begin
-        $display("Tempo\tRST\tDc_in\tD_out");
-        $monitor("%0t\t%b\t%02b\t%0d",
-                 $time, rst, Dc_in, D_out);
+        $display("Tempo\tRST\tVALID\tDc_in\tD_out");
+        $monitor("%0t\t%b\t%b\t%02b\t%0d",
+                 $time, rst, valid_input, Dc_in, D_out);
     end
 
     initial begin
 
         // Inicialização
-        rst   = 1;
-        Dc_in = 2'b10;     // manter
+        rst         = 1;
+        valid_input = 1;
+        Dc_in       = 2'b10;     // manter
 
         #20;
         rst = 0;
@@ -44,76 +47,86 @@ module tb_duty_controller;
         //----------------------------------------
         $display("\n=== Incrementando ===");
 
+        valid_input = 1;
         Dc_in = 2'b01;
-      	repeat(10) @(posedge clk);
-        // Esperado:
-        // 200
-        // 400
-        // ...
+        repeat(10) @(posedge clk);
 
         //----------------------------------------
         // Teste 2 - Manter
         //----------------------------------------
         $display("\n=== Mantendo ===");
 
+        valid_input = 1;
         Dc_in = 2'b10;
-      	repeat(10) @(posedge clk);
+        repeat(10) @(posedge clk);
 
         //----------------------------------------
         // Teste 3 - Diminuir
         //----------------------------------------
         $display("\n=== Diminuindo ===");
 
+        valid_input = 1;
         Dc_in = 2'b00;
-      	repeat(10) @(posedge clk);
-        // Esperado:
-        // 800
-        // 600
-        // ...
+        repeat(10) @(posedge clk);
 
         //----------------------------------------
         // Teste 4 - Saturação superior
         //----------------------------------------
         $display("\n=== Saturação Superior ===");
 
+        valid_input = 1;
         Dc_in = 2'b01;
-      	repeat(15) @(posedge clk);
-        // Esperado:
-        // ...
-        // 1400
-        // 1600
-        // 1800
-        // 2000
-        // 2047 (MAX_D)
+        repeat(15) @(posedge clk);
 
         //----------------------------------------
         // Teste 5 - Saturação inferior
         //----------------------------------------
         $display("\n=== Saturação Inferior ===");
 
+        valid_input = 1;
         Dc_in = 2'b00;
-      	repeat(20) @(posedge clk);
-        // Esperado: nunca fica negativo
+        repeat(20) @(posedge clk);
 
         //----------------------------------------
         // Teste 6 - Código inválido (11)
         //----------------------------------------
         $display("\n=== Código 11 ===");
 
+        valid_input = 1;
         Dc_in = 2'b11;
-      	repeat(8) @(posedge clk);
-        // Esperado: mantém o valor
+        repeat(8) @(posedge clk);
+
+        //----------------------------------------
+        // Teste 7 - valid_input = 0 (ignora Dc_in)
+        //----------------------------------------
+        $display("\n=== valid_input = 0 ===");
+
+        valid_input = 0;
+        Dc_in = 2'b01;      // deveria incrementar, mas deve ser ignorado
+        repeat(5) @(posedge clk);
+
+        Dc_in = 2'b00;      // deveria diminuir, mas deve ser ignorado
+        repeat(5) @(posedge clk);
+
+        Dc_in = 2'b11;      // também ignorado
+        repeat(5) @(posedge clk);
+
+        //----------------------------------------
+        // Teste 8 - Retorna valid_input = 1
+        //----------------------------------------
+        $display("\n=== valid_input volta para 1 ===");
+
+        valid_input = 1;
+        Dc_in = 2'b01;
+        repeat(5) @(posedge clk);
 
         $display("\nFim da simulação.");
         $finish;
-		
-      	/*
-        	Obs.: O monitor vai "printar" a alteração da variável, portanto quando ela não muda não há repetição de print.
-            ex.: 
-            Tempo	RST		Dc_in	D_out
-				0	1		10		0 
-			   10	1		10		0 
-			   20	1		10		0
+
+        /*
+        Obs.: O monitor só imprime quando algum sinal monitorado muda.
+        Portanto, enquanto valid_input = 0 e D_out permanece constante,
+        apenas as mudanças de Dc_in ou valid_input aparecerão no monitor.
         */
     end
 

@@ -9,7 +9,9 @@ module mppt_core #(parameter width = 10)(
   input wire valid_signal,			// Entrada que indica um sinal válido para início da lógica
   input wire [(width-1):0] V,		// Entrada com o valor de tensão atual
   input wire [(width-1):0] I,		// Entrada com o valor de corrente atual
-  output wire [1:0] Dc_out,			// Saída que indica a ação a se fazer no duty_controller
+//  output wire [1:0] Dc_out,			// Saída que indica a ação a se fazer no duty_controller
+//  output wire valid_end_cycle		// Saída que indica para a FSM "mãe" que o ciclo foi finalizado
+  output reg [1:0] Dc_out,			// Saída que indica a ação a se fazer no duty_controller
   output wire valid_end_cycle		// Saída que indica para a FSM "mãe" que o ciclo foi finalizado
 );
   
@@ -22,6 +24,7 @@ module mppt_core #(parameter width = 10)(
   reg [((2*width)-1):0] P_older;	// Variável com o valor da potência antiga
   wire [((2*width)-1):0] P_newer;	// Variável com o valor da potência nova 
   reg [1:0]	Dc_aux;					// Variável auxiliar para Dc_out
+  reg valid_end_cycle_aux;			// Variável auxiliar para valid_end_cycle
   reg [2:0] state;					// Variável que contém o estado atual da máquina de estados
   reg [2:0] next_state;				// Variável que contém o estado futuro da máquina de estados
   
@@ -132,11 +135,16 @@ module mppt_core #(parameter width = 10)(
   
   /* Lógica de saída */
   always @(*) begin
-    V_ref_newer = V_ref_older;
-    Dc_aux = 2'b10;
+ //   V_ref_newer = V_ref_older;
+ //   Dc_aux = 2'b10;
+    valid_end_cycle_aux = 1'b0;
     
     case(state)
       IDLE: begin
+        Dc_aux = 2'b10;
+        if(valid_pulse) begin
+        	V_ref_newer = V_ref_older;
+        end
       end
       P_DIFF: begin
       end
@@ -148,19 +156,29 @@ module mppt_core #(parameter width = 10)(
       end
       V_ref_L: begin
         Dc_aux = 2'b01;
+    	//valid_end_cycle_aux = 1'b1;
       end
       V_ref_G: begin
         Dc_aux = 2'b00;
+    	//valid_end_cycle_aux = 1'b1;
       end
       END: begin
+        if (P_newer == P_older && V_newer == V_older) begin
+          Dc_out = 2'b10;
+        end
+        else begin
+          Dc_out = Dc_aux;
+        end
+        valid_end_cycle_aux = 1'b1;
       end
       default: begin
         Dc_aux = 2'b10;
+    	valid_end_cycle_aux = 1'b1;
       end
     endcase
   end
 
-  assign Dc_out = Dc_aux;
-  assign valid_end_cycle = (state == END);
+//  assign Dc_out = Dc_aux;
+  assign valid_end_cycle = valid_end_cycle_aux;
   
 endmodule
