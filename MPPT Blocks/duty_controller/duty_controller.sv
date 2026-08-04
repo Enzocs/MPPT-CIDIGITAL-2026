@@ -6,6 +6,7 @@
 module duty_controller #(parameter width = 10)(
   input wire clk,
   input wire rst,
+  input wire valid_input,		// Entrada que indica a validade de Dc_in
   input wire [1:0] Dc_in,		// Entrada que indica a ação a se fazer (vem do bloco anterior)
   output wire [width:0] D_out	// Saída que contém o valor de controle de largura de pulso do PWM
 );
@@ -33,9 +34,8 @@ module duty_controller #(parameter width = 10)(
   always @(posedge clk or posedge rst) begin
     if (rst)
         D_older <= 0;
-    else begin
+    else if (valid_input) begin
         case (Dc_in)
-
             // diminuir
             2'b00: begin
               if (D_older < {{1'b0},delta_d}) begin
@@ -58,6 +58,9 @@ module duty_controller #(parameter width = 10)(
               D_older <= D_older;
             end
         endcase
+    end
+    else begin
+      D_older <= D_older;
     end
   end
   
