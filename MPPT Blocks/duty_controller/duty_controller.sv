@@ -7,7 +7,7 @@ module duty_controller #(parameter width = 10)(
   input wire clk,
   input wire rst,
   input wire [1:0] Dc_in,		// Entrada que indica a ação a se fazer (vem do bloco anterior)
-  output wire [width:0] D_out,	// Saída que contém o valor de controle de largura de pulso do PWM
+  output wire [width:0] D_out	// Saída que contém o valor de controle de largura de pulso do PWM
 );
  
 /*
