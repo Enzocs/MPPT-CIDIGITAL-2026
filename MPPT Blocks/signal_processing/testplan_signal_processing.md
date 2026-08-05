@@ -127,7 +127,7 @@ The verification strategy is based on RTL simulation using a self-checking testb
   * Occurs after processing;
   * Never occurs spontaneously.
 
-### 3.12 Consecutive Transactions
+### 3.12 Consecutive Transactions (preciso dessa ou posso assumir que amostras consecutivas são emitidas apenas após a conclusão da transação anterior?)
 
 **objective:** Check that consecutive samples are not lost.
 * **Stimulus:** 
