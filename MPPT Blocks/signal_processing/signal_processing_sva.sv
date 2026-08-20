@@ -1,7 +1,5 @@
-/* Assertions para a verificação dos testes:
-	3.1
-    3.11
-    3.12 preciso mesmo?
+/* 
+
 */
 
 module signal_processing_sva(
@@ -46,7 +44,7 @@ module signal_processing_sva(
     // signal_valid deve ocorrer após uma amostra válida
     property signal_valid_after_sample;
         @(posedge clk) disable iff(!rst_n)
-      $rose(sample_valid) |-> ##[1:5] signal_valid; // acredito que ##4 sirva
+      $rose(sample_valid) |-> ##4 signal_valid;
     endproperty
 
     assert property(signal_valid_after_sample);

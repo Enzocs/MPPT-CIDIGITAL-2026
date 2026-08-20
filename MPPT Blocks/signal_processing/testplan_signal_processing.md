@@ -126,11 +126,3 @@ The verification strategy is based on RTL simulation using a self-checking testb
   * Single pulse;
   * Occurs after processing;
   * Never occurs spontaneously.
-
-### 3.12 Consecutive Transactions (preciso dessa ou posso assumir que amostras consecutivas são emitidas apenas após a conclusão da transação anterior?)
-
-**objective:** Check that consecutive samples are not lost.
-* **Stimulus:** 
-  * Send multiple consecutive samples ​​to `v_sample_out` and `i_sample_out`.
-* **Expected Result:**
-  * No samples lost.

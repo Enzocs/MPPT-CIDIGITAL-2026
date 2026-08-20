@@ -1,19 +1,4 @@
-/* Testbench self-checking para verificação dos testes:
-	3.1 Reset and Inicialization
-    3.2 Single sample
-    3.3 Pipeline filling
-    3.4 Sliding window
-    3.5 Constant inputs
-    3.6 Increasing ramp
-    3.7 Decreasing ramp
-    3.8 Maximum values
-    3.9 Minimum values
-    3.10 Random samples
-   
-   Assertions para verificação dos testes:
-   	3.1
-    3.11
-    3.12 preciso mesmo?
+/* 
 */
 
 `timescale 1ns/1ps

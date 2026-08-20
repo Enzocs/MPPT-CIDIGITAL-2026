@@ -60,7 +60,7 @@ The verification strategy is based on RTL simulation using a self-checking testb
 * **Expected Result:**
   * Correct extension (upper four bits must always be zero).
   
-### 3.5 Invalid Channel ID (Precisa desse teste? É possível que aconteça ou o `spi_data_valid` ja impede isso?)
+### 3.5 Invalid Channel ID
 
 **objective:** Verify behavior for unsupported channel IDs.
 * **Stimulus:** 
