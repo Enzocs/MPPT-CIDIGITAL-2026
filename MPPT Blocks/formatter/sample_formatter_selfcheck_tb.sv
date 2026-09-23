@@ -128,13 +128,19 @@ module sample_formatter_selfcheck_tb;
         spi_frame_rx   = 0;
         spi_data_valid = 0;
 
+        // =====================================================
+        // Test 3.1 Reset
+        // =====================================================
+        repeat(3) @(posedge clk);
+        rst_n = 1;
+        @(posedge clk);
+        repeat(3) @(posedge clk);
+        rst_n = 0;
+        @(posedge clk);
         repeat(3) @(posedge clk);
         rst_n = 1;
         @(posedge clk);
 
-        // =====================================================
-        // Test 3.1 Reset
-        // =====================================================
         check_outputs(16'h0000,16'h0000,"3.1 RESET");
 
         // =====================================================

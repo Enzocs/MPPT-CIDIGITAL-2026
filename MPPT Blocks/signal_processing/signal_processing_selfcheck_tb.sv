@@ -127,6 +127,9 @@ module signal_processing_selfcheck_tb;
 
     initial begin
 
+      	$dumpfile("dump.vcd");
+      	$dumpvars(0, signal_processing_selfcheck_tb);
+      
         rst_n         = 0;
         sample_valid  = 0;
         v_sample_out  = 0;
@@ -191,6 +194,12 @@ module signal_processing_selfcheck_tb;
             send_sample($urandom,$urandom);
         end
 
+      	// 3.1 Reset and Inicialization
+        $display("3.1 Reset and Inicialization");
+      	rst_n = 0;
+      	repeat(5) @(posedge clk);
+      	$display("V=%0d I=%0d signal_valid=%0d", v_signal_out, i_signal_out, signal_valid);
+      
         $display("ALL TESTS FINISHED");
         $finish;
     end

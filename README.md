@@ -7,6 +7,6 @@ Link para o docs com as especificações: https://docs.google.com/document/d/1xb
 Links para os blocos no EDAPlayground:
 * sample_formatter: https://www.edaplayground.com/x/Fp7g
 * mppt_core: https://edaplayground.com/x/Vkky
-* pwm_generator: https://edaplayground.com/x/ffkahttps://edaplayground.com/x/ffka
+* pwm_generator: https://edaplayground.com/x/ffka
 * signal_processing: https://www.edaplayground.com/x/Fcqi
 
