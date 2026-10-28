@@ -119,40 +119,61 @@ module tb_mppt_top;
         $display("[%0t ns] === INICIANDO SIMULAÇÃO DO MPPT TOP LEVEL ===", $time);
 
         // ---------------------------------------------------------------------
-        // FASE 1: Alimentar o filtro com 4 amostras de Tensão (38V -> 12'h936)
-        // ---------------------------------------------------------------------
-        $display("[%0t ns] Enviando 4 amostras de Tensão...", $time);
-        repeat(N_FILTER_SAMP) begin
-            send_spi_frame_from_adc(CH_V_ID, 12'h936);
-        end
-
-        // ---------------------------------------------------------------------
-        // FASE 2: Alimentar o filtro com 4 amostras de Corrente (8A -> 12'hBA2)
+        // Alimentar o filtro com 4 amostras de Corrente e Tensão
         // ---------------------------------------------------------------------
         $display("[%0t ns] Enviando 4 amostras de Corrente...", $time);
         repeat(N_FILTER_SAMP) begin
-            send_spi_frame_from_adc(CH_I_ID, 12'hBA2);
+          send_spi_frame_from_adc(CH_I_ID, 12'd50);
         end
-
-        // Aguarda a execução do algoritmo MPPT atualizar o ciclo
-        wait(mppt_cycle_done == 1'b1);
-        $display("[%0t ns] [OK] Primeiro ciclo MPPT concluído!", $time);
-        #100;
-
-        // ---------------------------------------------------------------------
-        // FASE 3: Mudança de Potência (Perturbação na Corrente -> 10A -> 12'hE00)
-        // ---------------------------------------------------------------------
-        $display("[%0t ns] Injetando variação de Corrente para testar perturbação do MPPT...", $time);
+        $display("[%0t ns] Enviando 4 amostras de Tensão...", $time);
         repeat(N_FILTER_SAMP) begin
-            send_spi_frame_from_adc(CH_I_ID, 12'hE00);
-        end
-
-        wait(mppt_cycle_done == 1'b1);
-        $display("[%0t ns] [OK] Segundo ciclo MPPT concluído!", $time);
-
+          send_spi_frame_from_adc(CH_V_ID, 12'd100);
+        end 
+      
+      	// ---------------------------------------------------------------------
+        // Alimenta o filtro com amostras de Corrente e tensão para gerar variação e observar a saída PWM aumentando
+        // ---------------------------------------------------------------------
+      	$display("[%0t ns] Enviando amostras...", $time);
+        send_spi_frame_from_adc(CH_I_ID, 12'd20);
+        send_spi_frame_from_adc(CH_V_ID, 12'd200);
+      	send_spi_frame_from_adc(CH_I_ID, 12'd15);
+      	send_spi_frame_from_adc(CH_V_ID, 12'd250);
+      	send_spi_frame_from_adc(CH_I_ID, 12'd12);
+      	send_spi_frame_from_adc(CH_V_ID, 12'd255);
+      	send_spi_frame_from_adc(CH_I_ID, 12'd10);
+      	send_spi_frame_from_adc(CH_V_ID, 12'd260);
         // Deixa a simulação rodar para observar alguns ciclos do pulso PWM_OUT
-        #2000;
+        #40000;
+      
+      	// ---------------------------------------------------------------------
+        // Alimentar o filtro com 4 amostras de Corrente e Tensão  para gerar variação e observar a saída PWM diminuindo
+        // ---------------------------------------------------------------------
+        $display("[%0t ns] Enviando 4 amostras de Corrente...", $time);
+        repeat(N_FILTER_SAMP) begin
+          send_spi_frame_from_adc(CH_I_ID, 12'd6);
+        end
+        $display("[%0t ns] Enviando 4 amostras de Tensão...", $time);
+        repeat(N_FILTER_SAMP) begin
+          send_spi_frame_from_adc(CH_V_ID, 12'd270);
+        end 
+      	// Deixa a simulação rodar para observar alguns ciclos do pulso PWM_OUT
+        #16000;
+      
+      	// ---------------------------------------------------------------------
+        // Alimentar o filtro com 4 amostras de Corrente e tensão iguais a anterior para testar se o comportamento se matém
+        // ---------------------------------------------------------------------
+        $display("[%0t ns] Enviando 4 amostras de Corrente...", $time);
+        repeat(N_FILTER_SAMP) begin
+          send_spi_frame_from_adc(CH_I_ID, 12'd6);
+        end
+        $display("[%0t ns] Enviando 4 amostras de Tensão...", $time);
+        repeat(N_FILTER_SAMP) begin
+          send_spi_frame_from_adc(CH_V_ID, 12'd270);
+        end 
 
+      // Deixa a simulação rodar para observar alguns ciclos do pulso PWM_OUT
+        #20000;
+      
         $display("[%0t ns] === SIMULAÇÃO FINALIZADA COM SUCESSO ===", $time);
         $finish;
     end
@@ -161,8 +182,7 @@ module tb_mppt_top;
     // 7. MONITORAMENTO EM TEMPO DE EXECUÇÃO
     // =========================================================================
     initial begin
-        $monitor("Tempo=%0dns | CS_N=%b | SCLK=%b | BUSY=%b | PWM_OUT=%b | MPPT_DONE=%b", 
-                 $time, spi_cs_n, spi_sclk, spi_busy, pwm_out, mppt_cycle_done);
+      $monitor("Tempo=%0dns | DUTY_VALUE=%d", $time, dut.w_duty_value);
     end
 
 endmodule

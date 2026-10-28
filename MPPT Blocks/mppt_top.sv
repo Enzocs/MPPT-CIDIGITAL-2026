@@ -69,7 +69,7 @@ module mppt_top #(
     spi_controller #(
         .DATA_WIDTH (SPI_FRAME_BITS),
         .CPOL       (1'b0),
-        .CPHA       (1 me'b0),
+        .CPHA       (1 'b0),
         .CLK_DIV    (SPI_DIV)
     ) u_spi_controller (
         .CLK        (CLK),
@@ -135,10 +135,11 @@ module mppt_top #(
     duty_controller #(
         .width (PWM_WIDTH)
     ) u_duty_controller (
-        .clk   (CLK),
-        .rst   (rst_high),
-        .Dc_in (w_dc_action),
-        .D_out (w_duty_value)
+        .clk            (CLK),
+        .rst            (rst_high),
+        .valid_input    (MPPT_CYCLE_DONE),
+        .Dc_in          (w_dc_action),
+        .D_out          (w_duty_value)
     );
 
     // 6. PWM Generator - Gera o pulso PWM de saída

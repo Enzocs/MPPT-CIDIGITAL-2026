@@ -26,7 +26,7 @@ module duty_controller #(parameter width = 10)(
   
   /* Leitura do bando de dados (desabilitado por ainda não ter sido implementado) */
   //banco_de_dados delta_d_mem(.saida_leitura(delta_d),.read_en(1'b1),.write_en(1'b0),.entrada_escrita({(width+1){1'b0}}),.endereco(YYY),.clk(clk));	// leitura de delta_d
-	assign delta_d  = 10'd200;	// Valor atribuído localmente para simular o banco de dados não implementado
+	assign delta_d  = 10'd256;	// Valor atribuído localmente para simular o banco de dados não implementado
   //  banco_de_dados D_older_mem_ren(.saida_leitura(unused_saida),.read_en(1'b0),.write_en(1'b1),.entrada_escrita(D_older),.endereco(XXX2),.clk(clk)); // Escrita de D_older
   
   assign D_out = D_older;
