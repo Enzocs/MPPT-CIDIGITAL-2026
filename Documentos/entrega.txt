@@ -1,5 +1,5 @@
-NOME: Gabriel Marcarini Caramuru
+NOME: Gabriel Marcarini Caramuru, Lucas Alexandre Tavares, Enzo
 PROJETO: MPPT
 OPCAO_ENTREGA: Zip
-REPOSITORIO: 
+REPOSITORIO: https://github.com/Enzocs/MPPT-CIDIGITAL-2026/tree/main
 COMMIT: 
