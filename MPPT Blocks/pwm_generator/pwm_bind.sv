@@ -1,18 +1,5 @@
 // ===========================================================================
 // Formal monitor for pwm_generator
-//
-// Implements testplan.md. All properties are evaluated on `posedge clk` (the
-// DUT's single native clock) with `disable iff (rst)`. Reset is harness
-// infrastructure: no property below names `rst` in an antecedent or
-// consequent. `rst` appears only as the asynchronous clear of the monitor's
-// own reference phase counter, mirroring the DUT counter's clear.
-//
-// Safety finding carried over from the testplan (reported, NOT asserted):
-//   `pwm_out` is a continuous assign that is not gated by `rst`
-//   (pwm_generator.sv:5,19-20). During reset the DUT counter is held at 0, so
-//   the comparison evaluates 0 < D_in and the output drives continuously HIGH
-//   for any non-zero D_in. This is a reset-behaviour observation and is out of
-//   scope as a property; no RTL change is proposed.
 // ===========================================================================
 module pwm_generator_monitor #(
     parameter width = 10
