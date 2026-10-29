@@ -10,20 +10,6 @@ module pwm_generator_monitor #(
     input wire              pwm_out
 );
 
-  // ===========================================================================
-  // === pwm_phase family ===
-  // Port-derived reference model. `mon_phase` is a free-running counter whose
-  // only inputs are `clk` and `rst` — both DUT top-level ports — so it is a
-  // port-level prediction of the PWM phase, not a DUT-internal tap and not an
-  // FSM clone. It mirrors the DUT time base exactly (pwm_generator.sv:12-17):
-  // increments every posedge clk, asynchronously cleared by rst, wraps
-  // naturally modulo 2**(width+1).
-  //
-  // Soundness precondition (see testplan "Harness precondition for phase
-  // alignment"): mon_phase and the DUT counter are cleared by the same rst and
-  // therefore remain phase-aligned for all time, provided the harness applies
-  // reset at time zero (the generated Jasper TCL does).
-  // ===========================================================================
 
   localparam int unsigned DW     = width + 1;              // datapath width
   localparam [width:0]    MAX_D  = {(width+1){1'b1}};      // full-scale duty code
