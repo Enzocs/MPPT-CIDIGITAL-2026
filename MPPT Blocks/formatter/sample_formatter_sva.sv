@@ -49,7 +49,7 @@ module sample_formatter_sva(
     property valid_after_transaction;
         @(posedge clk)
         disable iff(!rst_n)
-        spi_data_valid |-> ##4 sample_valid;
+       (current_state == STATE_IDLE && spi_data_valid )|-> ##4 sample_valid;
     endproperty
 
     assert property(valid_after_transaction);
